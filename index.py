@@ -61,7 +61,7 @@ button_title = ""
 
 def onJsonClick():
     st.session_state.latest_email = get_latest_email()
-    print(f"first email is {st.session_state.latest_email}")
+    # print(f"first email is {st.session_state.latest_email}")
     st.session_state.isJsonFormatted = (st.session_state.format_type == "Json")
 
 

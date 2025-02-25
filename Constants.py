@@ -17,5 +17,5 @@ def prompt_for_email(email, jsonFormatted) :
 			     'Crew (Pilot & Cabin Crew Details)'
 			     'Services Requested( Can be Ground Handling, Fuel, Hotel Arrangement etc.). Provide only the trip details and do not include any additional text or comments at the start and end of your response.')
 	gpt_prompt = "".join([pre_input, email, post_input, json_format])
-	print(gpt_prompt)
+	# print(gpt_prompt)
 	return gpt_prompt
