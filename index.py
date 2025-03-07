@@ -84,8 +84,10 @@ with choose_option_selector[0]:
                 st.write("""
                     **Welcome back,**
                     <br>
-                    Easily convert email to successfull Trip Request
+                    <span>Easily convert email to successfull Trip Request. <b><i>Enter email below.</i></b> </span>
                     """, unsafe_allow_html=True)
+                # st.button("Fetch Email", on_click = onJsonClick)
+
 
 def onIndented():
     st.session_state.format_type = "Indented Preview"
@@ -189,41 +191,42 @@ with cols_mr[0]:
             ):
             with st.container(height=450, border=False):
                 # st.write("**Received Email**")
-                st.write(st.session_state.latest_email)
-                if st.session_state.formatted_email == "" :
-                    with stylable_container(
-                        key="btn8_with_border",
-                        css_styles="""
-                         button{
-                                color: white;
-                                font-size: 32px;
-                                background: #E7E8E8;
-                                border: none;
-                                color: white;
-                                margin-left: 46%;
-                                background: #2446A6;
-                            }                        
-                            """,
-                        ):
-                        st.html(
-                            '''
-                                <div class="center-align-text">
-                                <b>No Data Added</b><br>
-                                Click <b>Fetch Email</b> to start
-                                </div>
-                                <style>
-                                    .center-align-text {
-                                        margin-left: 10%;
-                                        margin-top: 28%;
-                                        font-size: 16px;
-                                        text-align: center;
-                                    }
-                                </style>
-                            '''
-                        )
-                        st.button("Fetch Email", on_click = onJsonClick)
-                else:
-                    st.empty()
+                # st.write(st.session_state.latest_email)
+                st.session_state.latest_email = st.text_area(label = "emailText", value = st.session_state.latest_email, height = 450, label_visibility = "hidden")
+                # if st.session_state.formatted_email == "" :
+                #     with stylable_container(
+                #         key="btn8_with_border",
+                #         css_styles="""
+                #          button{
+                #                 color: white;
+                #                 font-size: 32px;
+                #                 background: #E7E8E8;
+                #                 border: none;
+                #                 color: white;
+                #                 margin-left: 46%;
+                #                 background: #2446A6;
+                #             }                        
+                #             """,
+                #         ):
+                #         st.html(
+                #             '''
+                #                 <div class="center-align-text">
+                #                 <b>No Data Added</b><br>
+                #                 Click <b>Fetch Email</b> to start
+                #                 </div>
+                #                 <style>
+                #                     .center-align-text {
+                #                         margin-left: 10%;
+                #                         margin-top: 28%;
+                #                         font-size: 16px;
+                #                         text-align: center;
+                #                     }
+                #                 </style>
+                #             '''
+                #         )
+                #         st.button("Fetch Email", on_click = onJsonClick)
+                # else:
+                #     st.empty()
 
 
 # with st.container(border=True):
@@ -290,38 +293,23 @@ with cols_mr[2]:
                         }                        
                         """,
                     ):
-                    st.html(
-                        '''
-                            <div class="center-align-text">
-                            <b>Indented Preview</b><br>
-                            Click <b>Preview</b> to see magic
-                            </div>
-                            <style>
-                                .center-align-text {
-                                    margin-left: 10%;
-                                    margin-top: 28%;
-                                    font-size: 16px;
-                                    text-align: center;
-                                }
-                            </style>
-                        '''
-                    )
-                    st.button("Preview", on_click = onFormatClick, disabled = (st.session_state.latest_email == ""))                    # with stylable_container(
-                    #     key="btn7_with_border",
-                    #     css_styles="""
-                    #      button{
-                    #             color: white;
-                    #             font-size: 32px;
-                    #             margin-left: calc(45% - 10px);
-                    #             background: #2446A6;
-                    #             border-radius: 0px;
-                    #             padding-top: -32px;
-                    #             height: 20px;
-                    #         }                        
-                    #         """,
-                    #     ):
-                            # st.button("Preview", on_click = onJsonClick, disabled = (st.session_state.latest_email == ""))
-
-
+                    if st.session_state.formatted_email == "":
+                        st.html(
+                            '''
+                                <div class="center-align-text">
+                                <b>Indented Preview</b><br>
+                                Click <b>Preview</b> to see magic
+                                </div>
+                                <style>
+                                    .center-align-text {
+                                        margin-left: 10%;
+                                        margin-top: 28%;
+                                        font-size: 16px;
+                                        text-align: center;
+                                    }
+                                </style>
+                            '''
+                        )
+                        st.button("Preview", on_click = onFormatClick, disabled = (st.session_state.latest_email == "")) 
 
 
